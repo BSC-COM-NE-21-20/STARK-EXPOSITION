@@ -7,7 +7,6 @@ import { Entity } from "typeorm/decorator/entity/Entity";
 @Entity()
 export class Office {
     @PrimaryGeneratedColumn()
-
     id: number;
 
     @Column()

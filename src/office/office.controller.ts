@@ -15,10 +15,8 @@ constructor(private readonly  officeService:  OfficeService) {}
     type: 'object',
     properties: {
       officename: { type: 'string', example: 'Stark', description: 'User officename' },
-      offceemail: { type: 'string', example: 'sparkwilson2026@expo', description: 'User officeemail' },
+      offceemail: { type: 'string', example: 'office@expo', description: 'User officeemail' },
       description: { type: 'string', example: 'Type Somethimh Here', description: 'User description' },
-
-
     },
   },
 })

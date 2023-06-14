@@ -19,7 +19,7 @@ import { UserModule } from './user/user.module';
       synchronize: true,
 
     }),
-  UserModule, AgentsModule, DepartmentModule,  OfficeModule],
+  UserModule, AgentsModule, DepartmentModule,],
   controllers: [],
   providers: [],
 })
