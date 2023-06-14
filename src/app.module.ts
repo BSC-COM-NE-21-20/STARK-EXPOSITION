@@ -9,11 +9,11 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [ 
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
+      type: 'postgres',
+      host: 'dpg-chvq8gfdvk4oirnpk93g-a',
+      port: 5432,
+      username: 'stark_db_user',
+      password: 'BA5LnPN2nGSpfvsFfudjFDkV46glB2Ev',
       database: 'stark_db',
       autoLoadEntities: true,
       synchronize: true,
