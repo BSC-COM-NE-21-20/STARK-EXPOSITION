@@ -1,24 +1,33 @@
 
+import { IsNotEmpty, IsString } from "class-validator";
 import { Column, PrimaryGeneratedColumn } from "typeorm";
 import { Entity } from "typeorm/decorator/entity/Entity";
 
 
-@Entity({ name: 'department'})
+@Entity()
 export class Department {
 @PrimaryGeneratedColumn()
 
     id: number;
 
     @Column()
-    departmentName: string;
+    @IsNotEmpty()
+    @IsString()
+    departmentname: string;
 
     @Column()
+    @IsNotEmpty()
+    @IsString()
     location: string;
 
     @Column()
-    numberOfAssets: number;
+    @IsNotEmpty()
+    @IsString()
+    numberOfAssets: string;
 
     @Column()
+    @IsNotEmpty()
+    @IsString()
     description: string;
 }
 

@@ -5,10 +5,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class OfficeService {
-  updateOffice(id: number, officeData: Office): Office | PromiseLike<Office> {
+  updateOffice(officename: string, officeData: Office): Office | PromiseLike<Office> {
     throw new Error('Method not implemented.');
   }
-  deleteOffice(id: number): void | PromiseLike<void> {
+  deleteOffice(officename: string): void | PromiseLike<void> {
     throw new Error('Method not implemented.');
   }
   constructor(
@@ -16,36 +16,28 @@ export class OfficeService {
     private readonly  officeRepository: Repository<Office>,
   ) {}
 
-  // create(: CreateOfficeDto) {
-  //   return 'This action adds a new office';
-  // }
-
-  // findAll() {
-  //   return `This action returns all office`;
-  // }
-
   async createOffice(officeData: Office): Promise< Office> {
     const  office = this. officeRepository.create(officeData);
     return this. officeRepository.save( office);
   }
 
-  async getOfficeById(id: number): Promise< Office> {
-    return this. officeRepository.findOne({ where: { id } });
+  async getOfficeById(officename: string): Promise< Office> {
+    return this. officeRepository.findOne({ where: { officename } });
   }
 
-  async updateUser(id: number, officeData:  Office): Promise< Office> {
-    const  office = await this.getOfficeById(id);
+  async updateUser(officename: string, officeData:  Office): Promise< Office> {
+    const  office = await this.getOfficeById(officename);
     this. officeRepository.merge( office,  officeData);
     return this. officeRepository.save( office);
   }
 
  
-    async deleteUser(id: number): Promise<void> {
-    const existingOffice = await this. officeRepository.delete(id);
+    async deleteUser(officename: string): Promise<void> {
+    const existingOffice = await this. officeRepository.delete(officename);
       
       if (!existingOffice) {
-      throw new Error(` Office with id ${id} not found`);
+      throw new Error(` Office with officename ${officename} not found`);
       }
-      await this. officeRepository.delete(id);
+      await this. officeRepository.delete(officename);
 }
   }

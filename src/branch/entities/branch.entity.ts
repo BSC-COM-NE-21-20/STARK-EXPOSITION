@@ -1,7 +1,7 @@
 import { Column, PrimaryGeneratedColumn } from "typeorm";
 import { Entity } from "typeorm/decorator/entity/Entity";
 
-@Entity({ name: 'branch'})
+@Entity()
 export class Branch {
     @PrimaryGeneratedColumn()
     id: number;

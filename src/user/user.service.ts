@@ -19,24 +19,23 @@ export class UserService {
    
   }
 
-  async getUserById(id: number): Promise<User> {
-    return this.userRepository.findOne({ where: { id } });
+  async getUserById(username: string): Promise<User> {
+    return this.userRepository.findOne({ where: { username } });
   }
  
-  async updateUser(id: number, userData: User): Promise<User> {
-    const user = await this.getUserById(id);
+  async updateUser(username: string, userData: User): Promise<User> {
+    const user = await this.getUserById(username);
     this.userRepository.merge(user, userData);
     return this.userRepository.save(user);
   }
-
- 
-    async deleteUser(id: number): Promise<string> {
-    const existingUser = await this.userRepository.delete(id);
-      return `User with id ${id} was deleted successfully`;
+  
+    async deleteUser(username: string): Promise<string> {
+    const existingUser = await this.userRepository.delete(username);
+      return `User with username ${username} was deleted successfully`;
       if (!existingUser) {
-      throw new Error(`User with id ${id} not found`);  
+      throw new Error(`User with username ${username} not found`);  
       }
-      await this.userRepository.delete(id);
+      await this.userRepository.delete(username);
 }
 //searching the user
 async searchUser(query: any): Promise<User[]> {

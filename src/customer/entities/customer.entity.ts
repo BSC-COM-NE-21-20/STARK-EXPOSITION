@@ -2,21 +2,20 @@ import { Column, PrimaryGeneratedColumn } from "typeorm";
 import { Entity } from "typeorm/decorator/entity/Entity";
 
 
-@Entity({ name: 'customer'})
+@Entity()
 export class Customer {
-    @PrimaryGeneratedColumn()
+@PrimaryGeneratedColumn()
+id: number;
 
-    id: number;
+@Column()
+username: string;
 
-    @Column()
-    username: string;
+@Column()
+email: string;
 
-    @Column()
-    email: string;
+@Column()
+password: string;
 
-    @Column()
-    password: string;
-
-    @Column()
-    description: string;
+@Column()
+description: string;
 }

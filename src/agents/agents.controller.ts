@@ -5,13 +5,15 @@ import { AgentsService } from './agents.service';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
 import { Agent } from './entities/agent.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Marketing Agents Service Section')
 @Controller('agents')
 export class AgentsController {
+constructor(
+  private readonly agentsService: AgentsService) {}
 
-  constructor(private readonly agentsService: AgentsService) {}
-
-  @Post()
+@Post()
   async createAgent(@Body() agentData: Agent): Promise<Agent> {
     return this.agentsService.createAgent(agentData);
   }
@@ -20,11 +22,6 @@ export class AgentsController {
   async getAgentById(@Param('id') id: number): Promise<Agent> {
     return this.agentsService.getAgentById(id);
   }
- 
-  // @Get()
-  // findAll() {
-  //   return this.agentsService.findAll();
-  // }
  
   @Patch(':id')
   async updateAgent(
@@ -40,20 +37,5 @@ export class AgentsController {
   @Delete(':id')
   async deleteAgent(@Param('id') id: number): Promise<void> {
     return this.agentsService.deleteAgent(id);
-  }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.agentsService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateAgentDto: UpdateAgentDto) {
-  //   return this.agentsService.update(+id, updateAgentDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.agentsService.remove(+id);
-  // }
+  } 
 }
